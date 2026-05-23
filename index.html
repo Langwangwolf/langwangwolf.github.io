@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涓汉浠嬬粛</title>
+    <style>
+        :root {
+            --bg-start: #0f0c29;
+            --bg-mid: #302b63;
+            --bg-end: #24243e;
+            --card-bg: rgba(255,255,255,0.08);
+            --text: #e0e0e0;
+            --accent: #7b68ee;
+            --accent2: #00d2ff;
+            --radius: 16px;
+            --gap: 24px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        /* ---------- 瀵艰埅 ---------- */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(12px);
+            background: rgba(15,12,41,0.75);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 0 24px;
+        }
+        nav .nav-inner {
+            max-width: 960px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 56px;
+        }
+        nav .logo { font-size: 1.2rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
+        nav .links { display: flex; gap: 20px; list-style: none; }
+        nav .links a {
+            color: #bbb; text-decoration: none; font-size: 0.9rem;
+            transition: color 0.25s;
+        }
+        nav .links a:hover { color: var(--accent2); }
+
+        /* ---------- 甯冨眬 ---------- */
+        .container { max-width: 960px; margin: 0 auto; padding: 40px 24px 60px; }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            display: flex; align-items: center; gap: 40px;
+            padding: 60px 0; flex-wrap: wrap;
+        }
+        .hero-avatar {
+            flex-shrink: 0; width: 180px; height: 180px;
+            border-radius: 50%; overflow: hidden;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 40px rgba(123,104,238,0.35);
+            background: rgba(255,255,255,0.05);
+            display: flex; align-items: center; justify-content: center;
+            color: #888; font-size: 0.85rem; text-align: center;
+        }
+        .hero-avatar img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        .hero-text h1 {
+            font-size: 2.8rem; font-weight: 700; color: #fff; margin-bottom: 8px;
+        }
+        .hero-text h1 span { color: var(--accent2); }
+        .hero-text .tagline {
+            font-size: 1.1rem; color: #aaa; margin-bottom: 16px;
+        }
+        .hero-text .quick-links { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero-text .quick-links a {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 18px; border-radius: 24px;
+            background: var(--accent); color: #fff; text-decoration: none;
+            font-size: 0.9rem; transition: background 0.25s, transform 0.2s;
+        }
+        .hero-text .quick-links a:hover { background: #6a5acd; transform: translateY(-1px); }
+
+        /* ---------- 閫氱敤鍗＄墖 ---------- */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: var(--gap);
+        }
+        .card h2 {
+            font-size: 1.4rem; color: #fff; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .card h2 .icon { font-size: 1.3rem; }
+
+        /* ---------- 鍏充簬 ---------- */
+        .about p { color: #bbb; max-width: 640px; }
+
+        /* ---------- 鎶€鑳?---------- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+        .skill-item {
+            background: rgba(255,255,255,0.05); border-radius: 10px; padding: 16px;
+            border-left: 3px solid var(--accent);
+        }
+        .skill-item .name { font-weight: 600; color: #ddd; margin-bottom: 4px; }
+        .skill-item .desc { font-size: 0.85rem; color: #999; }
+
+        /* ---------- 鐖卞ソ ---------- */
+        .hobby-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .hobby-tag {
+            padding: 6px 16px; border-radius: 20px;
+            background: rgba(255,255,255,0.06); color: #ccc;
+            font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ---------- 鑱旂郴鏂瑰紡 ---------- */
+        .contact-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+        .contact-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 16px; background: rgba(255,255,255,0.04);
+            border-radius: 10px;
+        }
+        .contact-item .label { color: #999; font-size: 0.85rem; min-width: 36px; }
+        .contact-item .value { color: #ddd; font-size: 0.95rem; }
+
+        /* ---------- Footer ---------- */
+        footer {
+            text-align: center; padding: 30px 24px;
+            color: #666; font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* ---------- 鍝嶅簲寮?---------- */
+        @media (max-width: 640px) {
+            .hero { flex-direction: column; text-align: center; padding: 36px 0; }
+            .hero-avatar { width: 140px; height: 140px; }
+            .hero-text h1 { font-size: 2rem; }
+            nav .links { gap: 12px; }
+            .card { padding: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ====== 瀵艰埅鏍?====== -->
+<nav>
+    <div class="nav-inner">
+        <div class="logo">MY PAGE</div>
+        <ul class="links">
+            <li><a href="#about">鍏充簬</a></li>
+            <li><a href="#skills">鎶€鑳?/a></li>
+            <li><a href="#hobbies">鐖卞ソ</a></li>
+            <li><a href="#contact">鑱旂郴</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- ====== Hero 澶撮儴 ====== -->
+    <section class="hero">
+        <!-- 鐓х墖鍗犱綅鍖哄煙锛氭浛鎹?src 鍗冲彲 -->
+        <div class="hero-avatar">
+            <!--
+                鏇挎崲鐓х墖鏂规硶锛?                1. 灏嗕綘鐨勭収鐗囨斁鍒颁笌褰撳墠 HTML 鍚岀骇鐩綍
+                2. 灏嗕笅闈㈢殑 src 鏀逛负浣犵殑鐓х墖鏂囦欢鍚嶏紝濡?src="my_photo.jpg"
+                3. 濡傛灉鐓х墖涓嶅湪鍚岀骇鐩綍锛屽啓鐩稿璺緞鎴栫粷瀵硅矾寰勫潎鍙?            -->
+            <img src="my_photo.jpg"
+                 alt="涓汉鐓х墖">
+        </div>
+        <div class="hero-text">
+            <h1>浣犲ソ锛屾垜鏄?<span>鐙肩帇灏忕嫾/閲庣嫾</span></h1>
+            <p class="tagline">濞变箰/ 璁捐鐖卞ソ鑰?/p>
+            <div class="quick-links">
+                <a href="#contact">鑱旂郴鎴?/a>
+                <a href="#skills">鐪嬫妧鑳?/a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 鍏充簬鎴?====== -->
+    <section id="about" class="card about">
+        <h2><span class="icon">&#9998;</span> 鍏充簬鎴?/h2>
+        <p>
+            杩欓噷鏄綘鐨勪釜浜虹畝浠嬨€傚彲浠ヤ粙缁嶄綘鐨勮儗鏅€佺粡鍘嗐€佷环鍊艰鎴栬亴涓氱洰鏍囥€?            寤鸿鎺у埗鍦?2-3 鍙ヨ瘽浠ュ唴锛岃璁垮蹇€熶簡瑙ｄ綘鏄皝浠ュ強浣犺兘甯︽潵浠€涔堜环鍊笺€?            渚嬪锛? 骞翠簰鑱旂綉浜у搧缁忛獙锛屼笓娉ㄤ簬鐢ㄦ埛浣撻獙璁捐涓庢暟鎹┍鍔ㄥ闀匡紝
+            鏇句富瀵煎娆剧櫨涓囩骇鐢ㄦ埛浜у搧浠?0 鍒?1 鐨勫叏娴佺▼銆?        </p>
+    </section>
+
+    <!-- ====== 鐖卞ソ ====== -->
+    <section id="hobbies" class="card">
+        <h2><span class="icon">&#9733;</span> 鍏磋叮鐖卞ソ</h2>
+        <div class="hobby-tags">
+            <!-- 鍙嚜鐢卞鍒?hobby-tag -->
+            <span class="hobby-tag">鎵撳伐鐙?/span>
+            <span class="hobby-tag">i浜?/span>
+            <span class="hobby-tag">浼戞伅</span>
+            <span class="hobby-tag">鐢靛奖</span>
+        </div>
+    </section>
+
+    <!-- ====== 鑱旂郴鏂瑰紡 ====== -->
+    <section id="contact" class="card">
+        <h2><span class="icon">&#9993;</span> 鑱旂郴鏂瑰紡</h2>
+        <div class="contact-list">
+
+            <div class="contact-item">
+                <span class="label">閭</span>
+                <span class="value">furryeva@126.com</span>
+            </div>
+            <div class="contact-item">
+                <span class="label">QQ</span>
+                <span class="value">3060341283</span>
+            </div>
+            <div class="contact-item">
+                <span class="label">GitHub</span>
+                <span class="value">github.com/yourname</span>
+            </div>
+            <div class="contact-item">
+                <span class="label">鎵嬫満鑷虫帴鐭俊</span>
+                <span class="value">19200833032</span>
+            </div>
+            <div class="contact-item">
+                <span class="label">B绔?/span>
+                <span class="value">
+                     <a href="https://space.bilibili.com/1875595273?spm_id_from=333.337.0.0"target="blank">鐙肩帇</a>
+           </span>
+        </div>
+           <div class="contact-item">
+                <span class="label">鎶栭煶</span>
+                <span class="value">
+                     <a href="https://v.douyin.com/0P12xSX624Y/"target="blank">鐙肩帇灏弚olf</a>
+           </span>
+    </section>
+
+</div>
+
+<footer>
+    &copy; 2026 涓汉浠嬬粛 路 浣跨敤姝ゆā鏉垮彲鑷敱淇敼
+</footer>
+
+</body>
+</html>
