@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鐙肩帇灏忕嫾 路 涓汉涓婚〉</title>
+    <title>狼王小狼 · 个人主页</title>
     <style>
         :root {
             --bg-start: #0f0c29;
@@ -29,7 +29,7 @@
             line-height: 1.6;
         }
 
-        /* ---------- 瀵艰埅 ---------- */
+        /* ---------- 导航 ---------- */
         nav {
             position: sticky; top: 0; z-index: 100;
             backdrop-filter: blur(12px);
@@ -50,7 +50,7 @@
         }
         nav .links a:hover { color: var(--accent2); }
 
-        /* ---------- 甯冨眬 ---------- */
+        /* ---------- 布局 ---------- */
         .container { max-width: 960px; margin: 0 auto; padding: 40px 24px 60px; }
 
         /* ---------- Hero ---------- */
@@ -86,7 +86,7 @@
         }
         .hero-text .quick-links a:hover { background: #6a5acd; transform: translateY(-1px); }
 
-        /* ---------- 閫氱敤鍗＄墖 ---------- */
+        /* ---------- 通用卡片 ---------- */
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -101,10 +101,10 @@
         }
         .card h2 .icon { font-size: 1.3rem; }
 
-        /* ---------- 鍏充簬 ---------- */
+        /* ---------- 关于 ---------- */
         .about p { color: #bbb; max-width: 640px; }
 
-        /* ---------- 鎶€鑳?---------- */
+        /* ---------- 技能 ---------- */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
         .skill-item {
             background: rgba(255,255,255,0.05); border-radius: 10px; padding: 16px;
@@ -113,7 +113,7 @@
         .skill-item .name { font-weight: 600; color: #ddd; margin-bottom: 4px; }
         .skill-item .desc { font-size: 0.85rem; color: #999; }
 
-        /* ---------- 鐖卞ソ ---------- */
+        /* ---------- 爱好 ---------- */
         .hobby-tags { display: flex; flex-wrap: wrap; gap: 10px; }
         .hobby-tag {
             padding: 6px 16px; border-radius: 20px;
@@ -121,7 +121,7 @@
             font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* ---------- 鑱旂郴鏂瑰紡 ---------- */
+        /* ---------- 联系方式 ---------- */
         .contact-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
         .contact-item {
             display: flex; align-items: center; gap: 12px;
@@ -138,7 +138,7 @@
             border-top: 1px solid rgba(255,255,255,0.06);
         }
 
-        /* ---------- 鍝嶅簲寮?---------- */
+        /* ---------- 响应式 ---------- */
         @media (max-width: 640px) {
             .hero { flex-direction: column; text-align: center; padding: 36px 0; }
             .hero-avatar { width: 140px; height: 140px; }
@@ -150,69 +150,74 @@
 </head>
 <body>
 
-<!-- ====== 瀵艰埅鏍?====== -->
+<!-- ====== 导航栏 ====== -->
 <nav>
     <div class="nav-inner">
         <div class="logo">MY PAGE</div>
         <ul class="links">
-            <li><a href="#about">鍏充簬</a></li>
-            <li><a href="#skills">鎶€鑳?/a></li>
-            <li><a href="#hobbies">鐖卞ソ</a></li>
-            <li><a href="#contact">鑱旂郴</a></li>
+            <li><a href="#about">关于</a></li>
+            <li><a href="#skills">技能</a></li>
+            <li><a href="#hobbies">爱好</a></li>
+            <li><a href="#contact">联系</a></li>
         </ul>
     </div>
 </nav>
 
 <div class="container">
 
-    <!-- ====== Hero 澶撮儴 ====== -->
+    <!-- ====== Hero 头部 ====== -->
     <section class="hero">
-        <!-- 鐓х墖鍗犱綅鍖哄煙锛氭浛鎹?src 鍗冲彲 -->
+        <!-- 照片占位区域：替换 src 即可 -->
         <div class="hero-avatar">
             <!--
-                鏇挎崲鐓х墖鏂规硶锛?                1. 灏嗕綘鐨勭収鐗囨斁鍒颁笌褰撳墠 HTML 鍚岀骇鐩綍
-                2. 灏嗕笅闈㈢殑 src 鏀逛负浣犵殑鐓х墖鏂囦欢鍚嶏紝濡?src="my_photo.jpg"
-                3. 濡傛灉鐓х墖涓嶅湪鍚岀骇鐩綍锛屽啓鐩稿璺緞鎴栫粷瀵硅矾寰勫潎鍙?            -->
+                替换照片方法：
+                1. 将你的照片放到与当前 HTML 同级目录
+                2. 将下面的 src 改为你的照片文件名，如 src="my_photo.jpg"
+                3. 如果照片不在同级目录，写相对路径或绝对路径均可
+            -->
             <img src="my_photo.jpg"
-                 alt="涓汉鐓х墖">
+                 alt="个人照片">
         </div>
         <div class="hero-text">
-            <h1>浣犲ソ锛屾垜鏄?<span>鐙肩帇灏忕嫾/閲庣嫾</span></h1>
-            <p class="tagline">濞变箰/ 璁捐鐖卞ソ鑰?/p>
+            <h1>你好，我是 <span>狼王小狼/野狼</span></h1>
+            <p class="tagline">娱乐/ 设计爱好者</p>
             <div class="quick-links">
-                <a href="#contact">鑱旂郴鎴?/a>
-                <a href="#skills">鐪嬫妧鑳?/a>
+                <a href="#contact">联系我</a>
+                <a href="#skills">看技能</a>
             </div>
         </div>
     </section>
 
-    <!-- ====== 鍏充簬鎴?====== -->
+    <!-- ====== 关于我 ====== -->
     <section id="about" class="card about">
-        <h2><span class="icon">&#9998;</span> 鍏充簬鎴?/h2>
+        <h2><span class="icon">&#9998;</span> 关于我</h2>
         <p>
-            杩欓噷鏄綘鐨勪釜浜虹畝浠嬨€傚彲浠ヤ粙缁嶄綘鐨勮儗鏅€佺粡鍘嗐€佷环鍊艰鎴栬亴涓氱洰鏍囥€?            寤鸿鎺у埗鍦?2-3 鍙ヨ瘽浠ュ唴锛岃璁垮蹇€熶簡瑙ｄ綘鏄皝浠ュ強浣犺兘甯︽潵浠€涔堜环鍊笺€?            渚嬪锛? 骞翠簰鑱旂綉浜у搧缁忛獙锛屼笓娉ㄤ簬鐢ㄦ埛浣撻獙璁捐涓庢暟鎹┍鍔ㄥ闀匡紝
-            鏇句富瀵煎娆剧櫨涓囩骇鐢ㄦ埛浜у搧浠?0 鍒?1 鐨勫叏娴佺▼銆?        </p>
+            这里是你的个人简介。可以介绍你的背景、经历、价值观或职业目标。
+            建议控制在 2-3 句话以内，让访客快速了解你是谁以及你能带来什么价值。
+            例如：5 年互联网产品经验，专注于用户体验设计与数据驱动增长，
+            曾主导多款百万级用户产品从 0 到 1 的全流程。
+        </p>
     </section>
 
-    <!-- ====== 鐖卞ソ ====== -->
+    <!-- ====== 爱好 ====== -->
     <section id="hobbies" class="card">
-        <h2><span class="icon">&#9733;</span> 鍏磋叮鐖卞ソ</h2>
+        <h2><span class="icon">&#9733;</span> 兴趣爱好</h2>
         <div class="hobby-tags">
-            <!-- 鍙嚜鐢卞鍒?hobby-tag -->
-            <span class="hobby-tag">鎵撳伐鐙?/span>
-            <span class="hobby-tag">i浜?/span>
-            <span class="hobby-tag">浼戞伅</span>
-            <span class="hobby-tag">鐢靛奖</span>
+            <!-- 可自由增删 hobby-tag -->
+            <span class="hobby-tag">打工狼</span>
+            <span class="hobby-tag">i人</span>
+            <span class="hobby-tag">休息</span>
+            <span class="hobby-tag">电影</span>
         </div>
     </section>
 
-    <!-- ====== 鑱旂郴鏂瑰紡 ====== -->
+    <!-- ====== 联系方式 ====== -->
     <section id="contact" class="card">
-        <h2><span class="icon">&#9993;</span> 鑱旂郴鏂瑰紡</h2>
+        <h2><span class="icon">&#9993;</span> 联系方式</h2>
         <div class="contact-list">
 
             <div class="contact-item">
-                <span class="label">閭</span>
+                <span class="label">邮箱</span>
                 <span class="value">furryeva@126.com</span>
             </div>
             <div class="contact-item">
@@ -224,26 +229,26 @@
                 <span class="value">github.com/yourname</span>
             </div>
             <div class="contact-item">
-                <span class="label">鎵嬫満鑷虫帴鐭俊</span>
+                <span class="label">手机至接短信</span>
                 <span class="value">19200833032</span>
             </div>
             <div class="contact-item">
-                <span class="label">B绔?/span>
+                <span class="label">B站</span>
                 <span class="value">
-                     <a href="https://space.bilibili.com/1875595273?spm_id_from=333.337.0.0"target="blank">鐙肩帇</a>
+                     <a href="https://space.bilibili.com/1875595273?spm_id_from=333.337.0.0"target="blank">狼王</a>
            </span>
         </div>
            <div class="contact-item">
-                <span class="label">鎶栭煶</span>
+                <span class="label">抖音</span>
                 <span class="value">
-                     <a href="https://v.douyin.com/0P12xSX624Y/"target="blank">鐙肩帇灏弚olf</a>
+                     <a href="https://v.douyin.com/0P12xSX624Y/"target="blank">狼王小wolf</a>
            </span>
     </section>
 
 </div>
 
 <footer>
-    &copy; 2026 涓汉浠嬬粛 路 浣跨敤姝ゆā鏉垮彲鑷敱淇敼
+    &copy; 2026 个人介绍 · 使用此模板可自由修改
 </footer>
 
 </body>
