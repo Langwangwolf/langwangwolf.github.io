@@ -50,23 +50,6 @@ nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);background:rgba
 .contact-item:hover{background:rgba(255,255,255,.1);transform:translateX(4px)}
 .contact-item .label{color:#aaa;font-size:.85rem;min-width:40px}
 .contact-item .value{color:#fff;font-size:.95rem}.contact-item a{color:var(--accent2);text-decoration:none}
-.music-float{position:fixed;top:80px;right:24px;z-index:99;padding:16px;width:260px;display:flex;flex-direction:column;gap:10px;transition:all .3s}
-.music-float:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(167,139,250,.25)}
-.mf-top{display:flex;align-items:center;gap:10px}
-.mf-cover{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:2px solid rgba(255,255,255,.2);flex-shrink:0;box-shadow:0 0 15px rgba(167,139,250,.5);overflow:hidden;display:flex;align-items:center;justify-content:center}
-.mf-cover img{width:100%;height:100%;object-fit:cover;display:block}
-.mf-info{flex:1;min-width:0}
-.mf-title{font-size:.9rem;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mf-artist{font-size:.72rem;color:#aaa}
-.mf-play{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-size:13px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .2s}
-.mf-play:hover{transform:scale(1.1)}
-.mf-bar{height:5px;border-radius:3px;background:rgba(255,255,255,.15);overflow:hidden;cursor:pointer}
-.mf-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width .1s linear}
-.mf-ctrl{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#ccc}
-.mf-ctrl span{cursor:pointer;transition:all .2s;padding:4px 8px;border-radius:8px}
-.mf-ctrl span:hover{background:rgba(255,255,255,.1);color:#fff}
-#mfList{width:100%;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:6px 8px;font-size:12px;outline:none}
-#mfList option{background:#221a3a;color:#fff}
 .preview-card{position:fixed;z-index:999;width:220px;padding:16px;border-radius:16px;background:rgba(20,18,40,.95);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(10px) scale(.95);transition:all .25s ease}
 .preview-card.show{opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}
 .preview-card .pv-icon{font-size:32px;margin-bottom:8px}.preview-card .pv-title{color:#fff;font-weight:600;margin-bottom:4px}.preview-card .pv-desc{color:#aaa;font-size:.85rem}
@@ -82,22 +65,11 @@ footer{text-align:center;padding:30px 24px;color:#999;font-size:.85rem;border-to
 .card{padding:20px}
 .skills-grid{grid-template-columns:repeat(2,1fr)}
 .contact-list{grid-template-columns:1fr}
-.music-float{position:fixed;bottom:10px;right:10px;left:10px;top:auto;width:auto;padding:10px;z-index:999}
-.music-float .mf-ctrl{font-size:10px}
-.music-float #mfList{display:none}
-footer{padding-bottom:90px}
 }
 </style>
 </head>
 <body>
 <nav><div class="nav-inner"><div class="logo">狼王小狼</div><ul class="links"><li><a href="#about">关于</a></li><li><a href="#skills">技能</a></li><li><a href="#hobbies">爱好</a></li><li><a href="#contact">联系</a></li></ul></div></nav>
-<div class="music-float glass">
-<div class="mf-top"><div class="mf-cover" id="mfCover"><img src="wolf.jpeg" alt=""></div><div class="mf-info"><div class="mf-title" id="mfTitle">跟悲伤结了帐</div><div class="mf-artist" id="mfArtist">Gareth.T、揽佬SKAI</div></div><button class="mf-play" id="playBtn">▶</button></div>
-<div style="text-align:right;font-size:10px;color:#999;margin-bottom:1px;"><span id="curTime">0:00</span></div>
-<div class="mf-bar" id="progressBar"><div class="mf-bar-fill" id="mfBarFill"></div></div>
-<div class="mf-ctrl"><span id="prevBtn">上一首</span><span id="modeBtn">列表循环</span><span id="nextBtn">下一首</span></div>
-<select id="mfList"></select>
-</div>
 <div class="container">
 <section class="hero-big">
 <div class="avatar-wrap"><div class="avatar-ring"></div><div class="hero-avatar"><img src="my_photo.jpg" alt="个人照片"></div></div>
@@ -136,76 +108,6 @@ footer{padding-bottom:90px}
 <button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <script>
 window.onload=function(){window.scrollTo(0,0)};
-const songs=[
-{file:"music/Gareth.T,揽佬SKAI ISYOURGOD - 跟悲伤结了帐.mp3",name:"跟悲伤结了帐",artist:"Gareth.T、揽佬SKAI"},
-{file:"music/Graham - Save Me.mp3",name:"Save Me",artist:"Graham"},
-{file:"music/陈慧琳 - 快乐情人.mp3",name:"快乐情人",artist:"陈慧琳"},
-{file:"music/励阳,徐君 - 我知道你.mp3",name:"我知道你",artist:"励阳、徐君"},
-{file:"music/薛之谦 - 暧昧.mp3",name:"暧昧",artist:"薛之谦"},
-{file:"music/薛之谦 - 背过手.mp3",name:"背过手",artist:"薛之谦"},
-{file:"music/薛之谦 - 被人.mp3",name:"被人",artist:"薛之谦"},
-{file:"music/薛之谦 - 变废为宝.mp3",name:"变废为宝",artist:"薛之谦"},
-{file:"music/薛之谦 - 迟迟.mp3",name:"迟迟",artist:"薛之谦"},
-{file:"music/薛之谦 - 崇拜.mp3",name:"崇拜",artist:"薛之谦"},
-{file:"music/薛之谦 - 丑八怪.mp3",name:"丑八怪",artist:"薛之谦"},
-{file:"music/薛之谦 - 等我回家.mp3",name:"等我回家",artist:"薛之谦"},
-{file:"music/薛之谦 - 动物世界.mp3",name:"动物世界",artist:"薛之谦"},
-{file:"music/薛之谦 - 方圆几里.mp3",name:"方圆几里",artist:"薛之谦"},
-{file:"music/薛之谦 - 刚刚好.mp3",name:"刚刚好",artist:"薛之谦"},
-{file:"music/薛之谦 - 怪咖.mp3",name:"怪咖",artist:"薛之谦"},
-{file:"music/薛之谦 - 狐狸.mp3",name:"狐狸",artist:"薛之谦"},
-{file:"music/薛之谦 - 媚人.mp3",name:"媚人",artist:"薛之谦"},
-{file:"music/薛之谦 - 木偶人.mp3",name:"木偶人",artist:"薛之谦"},
-{file:"music/薛之谦 - 那是你离开了北京的生活.mp3",name:"那是你离开了北京的生活",artist:"薛之谦"},
-{file:"music/薛之谦 - 你还要我怎样.mp3",name:"你还要我怎样",artist:"薛之谦"},
-{file:"music/薛之谦 - 念.mp3",name:"念",artist:"薛之谦"},
-{file:"music/薛之谦 - 陪你去流浪.mp3",name:"陪你去流浪",artist:"薛之谦"},
-{file:"music/薛之谦 - 平庸 (Live).mp3",name:"平庸 (Live)",artist:"薛之谦"},
-{file:"music/薛之谦 - 其实.mp3",name:"其实",artist:"薛之谦"},
-{file:"music/薛之谦 - 认真的雪.mp3",name:"认真的雪",artist:"薛之谦"},
-{file:"music/薛之谦 - 绅士.mp3",name:"绅士",artist:"薛之谦"},
-{file:"music/薛之谦 - 深深爱过你(前世).mp3",name:"深深爱过你(前世)",artist:"薛之谦"},
-{file:"music/薛之谦 - 天外来物.mp3",name:"天外来物",artist:"薛之谦"},
-{file:"music/薛之谦 - 顽疾.mp3",name:"顽疾",artist:"薛之谦"},
-{file:"music/薛之谦 - 违背的青春.mp3",name:"违背的青春",artist:"薛之谦"},
-{file:"music/薛之谦 - 我好像在哪见过你.mp3",name:"我好像在哪见过你",artist:"薛之谦"},
-{file:"music/薛之谦 - 无数.mp3",name:"无数",artist:"薛之谦"},
-{file:"music/薛之谦 - 下雨了.mp3",name:"下雨了",artist:"薛之谦"},
-{file:"music/薛之谦 - 像风一样.mp3",name:"像风一样",artist:"薛之谦"},
-{file:"music/薛之谦 - 笑场.mp3",name:"笑场",artist:"薛之谦"},
-{file:"music/薛之谦 - 哑巴.mp3",name:"哑巴",artist:"薛之谦"},
-{file:"music/薛之谦 - 演员.mp3",name:"演员",artist:"薛之谦"},
-{file:"music/薛之谦 - 野心.mp3",name:"野心",artist:"薛之谦"},
-{file:"music/薛之谦 - 一半.mp3",name:"一半",artist:"薛之谦"},
-{file:"music/薛之谦 - 意外.mp3",name:"意外",artist:"薛之谦"},
-{file:"music/薛之谦 - 跃.mp3",name:"跃",artist:"薛之谦"},
-{file:"music/薛之谦 - 在那天回不去的路上.mp3",name:"在那天回不去的路上",artist:"薛之谦"},
-{file:"music/薛之谦 - 这么久没见.mp3",name:"这么久没见",artist:"薛之谦"},
-{file:"music/薛之谦 - 租购.mp3",name:"租购",artist:"薛之谦"},
-{file:"music/郁可唯 - 茶汤.mp3",name:"茶汤",artist:"郁可唯"},
-{file:"music/郑浩Z-Hao,冰洁 - 琵琶曲.mp3",name:"琵琶曲",artist:"郑浩Z-Hao、冰洁"}
-];
-let currentSong=0,audio=new Audio(),isPlaying=false;
-const playBtn=document.getElementById('playBtn'),songTitle=document.getElementById('mfTitle'),songArtist=document.getElementById('mfArtist'),barFill=document.getElementById('mfBarFill'),listEl=document.getElementById('mfList'),coverEl=document.getElementById('mfCover');
-songs.forEach((s,i)=>{const opt=document.createElement('option');opt.value=i;opt.textContent=s.name;listEl.appendChild(opt)});
-listEl.onchange=function(){const wasPlaying=!audio.paused;loadSong(parseInt(this.value));if(wasPlaying)audio.play()};
-function loadSong(idx){
-currentSong=(idx+songs.length)%songs.length;
-const s=songs[currentSong];
-audio.src=encodeURI(s.file);
-songTitle.textContent=s.name;
-songArtist.textContent=s.artist;
-listEl.value=currentSong;
-}
-loadSong(0);
-document.getElementById('prevBtn').onclick=function(){const wasPlaying=!audio.paused;loadSong(currentSong-1);if(wasPlaying)audio.play()};
-document.getElementById('nextBtn').onclick=function(){const wasPlaying=!audio.paused;loadSong(currentSong+1);if(wasPlaying)audio.play()};
-playBtn.onclick=function(){if(isPlaying){audio.pause();this.textContent='▶';isPlaying=false}else{audio.play();this.textContent='⏸';isPlaying=true}};
-let playMode="list";
-document.getElementById("modeBtn").onclick=function(){if(playMode==="list"){playMode="single";this.textContent="单曲循环"}else{playMode="list";this.textContent="列表循环"}};
-audio.onended=function(){if(playMode==="single"){audio.currentTime=0;audio.play()}else{loadSong(currentSong+1);audio.play()}};
-audio.ontimeupdate=function(){if(audio.duration){barFill.style.width=(audio.currentTime/audio.duration*100)+'%';const cur=document.getElementById('curTime');if(cur){const m=Math.floor(audio.currentTime/60);const s=Math.floor(audio.currentTime%60);cur.textContent=m+':'+(s<10?'0':'')+s;}}};
-document.getElementById('progressBar').onclick=function(e){const rect=this.getBoundingClientRect();const pct=(e.clientX-rect.left)/rect.width;audio.currentTime=pct*audio.duration};
 const phrases=["娱乐爱好者","设计爱好者","打工狼","喜欢听歌打游戏"];
 let pIdx=0,cIdx=0,deleting=false;
 function typeLoop(){const el=document.getElementById('typingText');const cur=phrases[pIdx];if(!deleting){el.textContent=cur.substring(0,cIdx+1);cIdx++;if(cIdx===cur.length){deleting=true;setTimeout(typeLoop,2000);return}setTimeout(typeLoop,120)}else{el.textContent=cur.substring(0,cIdx-1);cIdx--;if(cIdx===0){deleting=false;pIdx=(pIdx+1)%phrases.length;setTimeout(typeLoop,300);return}setTimeout(typeLoop,40)}}
