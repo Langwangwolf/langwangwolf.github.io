@@ -1,246 +1,221 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>狼王小狼 · 个人主页</title>
-    <style>
-        :root {
-            --bg-start: #0f0c29;
-            --bg-mid: #302b63;
-            --bg-end: #24243e;
-            --card-bg: rgba(255,255,255,0.08);
-            --text: #e0e0e0;
-            --accent: #7b68ee;
-            --accent2: #00d2ff;
-            --radius: 16px;
-            --gap: 24px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            color: var(--text);
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
-            background-attachment: fixed;
-            line-height: 1.6;
-        }
-
-        /* ---------- 导航 ---------- */
-        nav {
-            position: sticky; top: 0; z-index: 100;
-            backdrop-filter: blur(12px);
-            background: rgba(15,12,41,0.75);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 0 24px;
-        }
-        nav .nav-inner {
-            max-width: 960px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 56px;
-        }
-        nav .logo { font-size: 1.2rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
-        nav .links { display: flex; gap: 20px; list-style: none; }
-        nav .links a {
-            color: #bbb; text-decoration: none; font-size: 0.9rem;
-            transition: color 0.25s;
-        }
-        nav .links a:hover { color: var(--accent2); }
-
-        /* ---------- 布局 ---------- */
-        .container { max-width: 960px; margin: 0 auto; padding: 40px 24px 60px; }
-
-        /* ---------- Hero ---------- */
-        .hero {
-            display: flex; align-items: center; gap: 40px;
-            padding: 60px 0; flex-wrap: wrap;
-        }
-        .hero-avatar {
-            flex-shrink: 0; width: 180px; height: 180px;
-            border-radius: 50%; overflow: hidden;
-            border: 3px solid var(--accent);
-            box-shadow: 0 0 40px rgba(123,104,238,0.35);
-            background: rgba(255,255,255,0.05);
-            display: flex; align-items: center; justify-content: center;
-            color: #888; font-size: 0.85rem; text-align: center;
-        }
-        .hero-avatar img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
-        }
-        .hero-text h1 {
-            font-size: 2.8rem; font-weight: 700; color: #fff; margin-bottom: 8px;
-        }
-        .hero-text h1 span { color: var(--accent2); }
-        .hero-text .tagline {
-            font-size: 1.1rem; color: #aaa; margin-bottom: 16px;
-        }
-        .hero-text .quick-links { display: flex; gap: 12px; flex-wrap: wrap; }
-        .hero-text .quick-links a {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 8px 18px; border-radius: 24px;
-            background: var(--accent); color: #fff; text-decoration: none;
-            font-size: 0.9rem; transition: background 0.25s, transform 0.2s;
-        }
-        .hero-text .quick-links a:hover { background: #6a5acd; transform: translateY(-1px); }
-
-        /* ---------- 通用卡片 ---------- */
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: var(--radius);
-            padding: 32px;
-            margin-bottom: var(--gap);
-        }
-        .card h2 {
-            font-size: 1.4rem; color: #fff; margin-bottom: 16px;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .card h2 .icon { font-size: 1.3rem; }
-
-        /* ---------- 关于 ---------- */
-        .about p { color: #bbb; max-width: 640px; }
-
-        /* ---------- 爱好 ---------- */
-        .hobby-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .hobby-tag {
-            padding: 6px 16px; border-radius: 20px;
-            background: rgba(255,255,255,0.06); color: #ccc;
-            font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* ---------- 联系方式 ---------- */
-        .contact-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
-        .contact-item {
-            display: flex; align-items: center; gap: 12px;
-            padding: 12px 16px; background: rgba(255,255,255,0.04);
-            border-radius: 10px;
-        }
-        .contact-item .label { color: #999; font-size: 0.85rem; min-width: 36px; }
-        .contact-item .value { color: #ddd; font-size: 0.95rem; }
-
-        /* ---------- Footer ---------- */
-        footer {
-            text-align: center; padding: 30px 24px;
-            color: #666; font-size: 0.85rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-
-        /* ---------- 响应式 ---------- */
-        @media (max-width: 640px) {
-            .hero { flex-direction: column; text-align: center; padding: 36px 0; }
-            .hero-avatar { width: 140px; height: 140px; }
-            .hero-text h1 { font-size: 2rem; }
-            nav .links { gap: 12px; }
-            .card { padding: 22px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>狼王小狼 · 个人主页</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#8b9cf0;--accent2:#c98be0;--glass:rgba(255,255,255,.08);--border:rgba(255,255,255,.12)}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;color:#f0f0f0;min-height:100vh;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),url('wolf.jpeg') center/cover fixed no-repeat;line-height:1.6;overflow-x:hidden}
+.glass{background:var(--glass);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid var(--border);border-radius:22px;box-shadow:0 8px 32px rgba(0,0,0,.35)}
+nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);background:rgba(0,0,0,.45);border-bottom:1px solid rgba(255,255,255,.08);padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-size:1.2rem;font-weight:700;color:#fff}
+.links{display:flex;gap:24px;list-style:none}
+.links a{color:#ccc;text-decoration:none;font-size:.95rem;transition:all .25s;position:relative}
+.links a:after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s}
+.links a:hover{color:#fff}.links a:hover:after{width:100%}
+.container{max-width:1100px;margin:0 auto;padding:0 24px 60px}
+.hero-big{min-height:calc(100vh - 60px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 0;opacity:0;transform:translateY(30px);animation:fadeUp 1s .2s forwards}
+.avatar-wrap{position:relative;margin-bottom:30px}
+.avatar-ring{position:absolute;inset:-10px;border-radius:50%;border:2px solid transparent;background:conic-gradient(var(--accent),var(--accent2),#60a5fa,var(--accent)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-avatar{width:180px;height:180px;border-radius:50%;overflow:hidden;box-shadow:0 0 60px rgba(167,139,250,.5);transition:transform .3s}
+.hero-avatar:hover{transform:scale(1.05) rotate(5deg)}
+.hero-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-big h1{font-size:4rem;font-weight:800;color:#fff;margin-bottom:12px;line-height:1.2;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+.hero-big .sub{font-size:1.3rem;color:#ddd;margin-bottom:16px;min-height:2em;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.hero-desc{max-width:600px;color:#bbb;font-size:1.05rem;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 32px;border-radius:30px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;font-size:1rem;box-shadow:0 4px 20px rgba(167,139,250,.4);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(244,114,182,.5)}
+.btn.outline{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);box-shadow:none;margin-left:12px}
+.btn.outline:hover{border-color:#fff;background:rgba(255,255,255,.15)}
+.section-title{text-align:center;font-size:2rem;font-weight:700;color:#fff;margin:60px 0 30px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.card{padding:36px;margin-bottom:24px;opacity:0;transform:translateY(40px);transition:all .6s ease}
+.card.visible{opacity:1;transform:translateY(0)}.card:hover{transform:translateY(-2px)}
+.card h2{font-size:1.4rem;color:#fff;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.card p{color:#ddd}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.skill-item{padding:20px;text-align:center;background:rgba(255,255,255,.05);border-radius:14px;transition:all .3s}
+.skill-item:hover{background:rgba(167,139,250,.15);transform:translateY(-4px)}
+.skill-item .skill-icon{font-size:2.5rem;margin-bottom:10px}
+.skill-item .skill-name{color:#fff;font-weight:600;margin-bottom:6px}
+.hobby-tags{display:flex;flex-wrap:wrap;gap:10px}
+.hobby-tag{padding:8px 18px;border-radius:20px;background:rgba(255,255,255,.08);color:#eee;font-size:.9rem;border:1px solid rgba(255,255,255,.15);transition:all .3s;cursor:default}
+.hobby-tag:hover{background:rgba(167,139,250,.2);border-color:var(--accent);color:#fff;transform:translateY(-3px) scale(1.05)}
+.contact-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.contact-item{display:flex;align-items:center;gap:12px;padding:14px 18px;background:rgba(255,255,255,.05);border-radius:12px;transition:all .2s;position:relative}
+.contact-item:hover{background:rgba(255,255,255,.1);transform:translateX(4px)}
+.contact-item .label{color:#aaa;font-size:.85rem;min-width:40px}
+.contact-item .value{color:#fff;font-size:.95rem}.contact-item a{color:var(--accent2);text-decoration:none}
+.music-float{position:fixed;top:80px;right:24px;z-index:99;padding:16px;width:260px;display:flex;flex-direction:column;gap:10px;transition:all .3s}
+.music-float:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(167,139,250,.25)}
+.mf-top{display:flex;align-items:center;gap:10px}
+.mf-cover{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:2px solid rgba(255,255,255,.2);flex-shrink:0;box-shadow:0 0 15px rgba(167,139,250,.5);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.mf-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.mf-info{flex:1;min-width:0}
+.mf-title{font-size:.9rem;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mf-artist{font-size:.72rem;color:#aaa}
+.mf-play{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-size:13px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.mf-play:hover{transform:scale(1.1)}
+.mf-bar{height:5px;border-radius:3px;background:rgba(255,255,255,.15);overflow:hidden;cursor:pointer}
+.mf-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width .1s linear}
+.mf-ctrl{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#ccc}
+.mf-ctrl span{cursor:pointer;transition:all .2s;padding:4px 8px;border-radius:8px}
+.mf-ctrl span:hover{background:rgba(255,255,255,.1);color:#fff}
+#mfList{width:100%;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:6px 8px;font-size:12px;outline:none}
+#mfList option{background:#221a3a;color:#fff}
+.preview-card{position:fixed;z-index:999;width:220px;padding:16px;border-radius:16px;background:rgba(20,18,40,.95);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(10px) scale(.95);transition:all .25s ease}
+.preview-card.show{opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}
+.preview-card .pv-icon{font-size:32px;margin-bottom:8px}.preview-card .pv-title{color:#fff;font-weight:600;margin-bottom:4px}.preview-card .pv-desc{color:#aaa;font-size:.85rem}
+.preview-card .pv-badge{display:inline-block;margin-top:8px;padding:3px 10px;border-radius:10px;font-size:.75rem}
+footer{text-align:center;padding:30px 24px;color:#999;font-size:.85rem;border-top:1px solid rgba(255,255,255,.1)}
+#backTop{position:fixed;bottom:30px;right:30px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:0 4px 20px rgba(167,139,250,.4);z-index:99}
+#backTop.show{opacity:1;pointer-events:auto}#backTop:hover{transform:translateY(-3px)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){
+.hero-big h1{font-size:2.3rem}
+.hero-avatar{width:130px;height:130px}
+.links{gap:14px}
+.card{padding:20px}
+.skills-grid{grid-template-columns:repeat(2,1fr)}
+.contact-list{grid-template-columns:1fr}
+.music-float{position:fixed;bottom:10px;right:10px;left:10px;top:auto;width:auto;padding:10px;z-index:999}
+.music-float .mf-ctrl{font-size:10px}
+.music-float #mfList{display:none}
+footer{padding-bottom:90px}
+}
+</style>
 </head>
 <body>
-
-<!-- ====== 导航栏 ====== -->
-<nav>
-    <div class="nav-inner">
-        <div class="logo">MY PAGE</div>
-        <ul class="links">
-            <li><a href="#about">关于</a></li>
-            <li><a href="#hobbies">爱好</a></li>
-            <li><a href="#contact">联系</a></li>
-        </ul>
-    </div>
-</nav>
-
-<div class="container">
-
-    <!-- ====== Hero 头部 ====== -->
-    <section class="hero">
-        <!-- 照片占位区域：替换 src 即可 -->
-        <div class="hero-avatar">
-            <!--
-                替换照片方法：
-                1. 将你的照片放到与当前 HTML 同级目录
-                2. 将下面的 src 改为你的照片文件名，如 src="my_photo.jpg"
-                3. 如果照片不在同级目录，写相对路径或绝对路径均可
-            -->
-            <img src="my_photo.jpg"
-                 alt="个人照片">
-        </div>
-        <div class="hero-text">
-            <h1>你好，我是 <span>狼王小狼/野狼</span></h1>
-            <p class="tagline">娱乐/ 设计爱好者</p>
-            <div class="quick-links">
-                <a href="#contact">联系我</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== 关于我 ====== -->
-    <section id="about" class="card about">
-        <h2><span class="icon">&#9998;</span> 关于我</h2>
-        <p>
-            这里是狼王小狼/野狼，是一个i人网上会比较开朗或会发疯，线下会比较社恐但聊多/见面多了就不会了，这是我的个人网站到时候我可能会放一些别的，就没有别的任何含义了
-        </p>
-    </section>
-
-    <!-- ====== 爱好 ====== -->
-    <section id="hobbies" class="card">
-        <h2><span class="icon">&#9733;</span> 兴趣爱好</h2>
-        <div class="hobby-tags">
-            <!-- 可自由增删 hobby-tag -->
-            <span class="hobby-tag">打工狼</span>
-            <span class="hobby-tag">i人</span>
-            <span class="hobby-tag">休息</span>
-            <span class="hobby-tag">电影</span>
-        </div>
-    </section>
-
-    <!-- ====== 联系方式 ====== -->
-    <section id="contact" class="card">
-        <h2><span class="icon">&#9993;</span> 联系方式</h2>
-        <div class="contact-list">
-
-            <div class="contact-item">
-                <span class="label">邮箱</span>
-                <span class="value">furryeva@126.com</span>
-            </div>
-            <div class="contact-item">
-                <span class="label">QQ</span>
-                <span class="value">3060341283 <a href="https://qm.qq.com/q/HFfeTiJHOu"target="blank">野狼</a></span>
-            </div>
-            <div class="contact-item">
-                <span class="label">GitHub</span>
-                <span class="value">github.com/yourname</span>
-            </div>
-            <div class="contact-item">
-                <span class="label">手机至接短信</span>
-                <span class="value">19200833032</span>
-            </div>
-            <div class="contact-item">
-                <span class="label">B站</span>
-                <span class="value">
-                     <a href="https://space.bilibili.com/1875595273?spm_id_from=333.337.0.0"target="blank">狼王</a>
-           </div>
-           <div class="contact-item">
-                <span class="label">抖音</span>
-                <span class="value">
-                     <a href="https://v.douyin.com/0P12xSX624Y/"target="blank">狼王小wolf</a>
-           </div>
-               <div class="contact-item">
-                <span class="label">QQ群</span>
-                <span class="value">
-                     <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=aZ%2BaD51BgG%2BgAfxgBAVyhjk8zYK%2Fl5mNWJXnUnkLlwgGq6eGkKqWUMB6MaqDzZ3e&busi_data=eyJncm91cENvZGUiOiIxNDQzOTkxNzciLCJ0b2tlbiI6IlFaK0kyWGtuSk1DcG9nWkVFR3kwMmFkSTV1MDhlc2s2Vk1IdlJrbkxNend1TGlMZ3Z4Zko2S0VlUERKMHNUTzIiLCJ1aW4iOiIzMDYwMzQxMjgzIn0%3D&data=AXp7mHgsoDmEM_gMxxdzqHK2otQ6M9ZuSkhqNxwuw_YMelXX3QO31mvstbwNQtgX-VTWhSlB0sqPxtdOQaXWUg&svctype=4&tempid=h5_group_info"target="blank">小狼的QQ群</a>
-           </span>
-       </div>
-    </section>
-
+<nav><div class="nav-inner"><div class="logo">狼王小狼</div><ul class="links"><li><a href="#about">关于</a></li><li><a href="#skills">技能</a></li><li><a href="#hobbies">爱好</a></li><li><a href="#contact">联系</a></li></ul></div></nav>
+<div class="music-float glass">
+<div class="mf-top"><div class="mf-cover" id="mfCover"><img src="wolf.jpeg" alt=""></div><div class="mf-info"><div class="mf-title" id="mfTitle">跟悲伤结了帐</div><div class="mf-artist" id="mfArtist">Gareth.T、揽佬SKAI</div></div><button class="mf-play" id="playBtn">▶</button></div>
+<div style="text-align:right;font-size:10px;color:#999;margin-bottom:1px;"><span id="curTime">0:00</span></div>
+<div class="mf-bar" id="progressBar"><div class="mf-bar-fill" id="mfBarFill"></div></div>
+<div class="mf-ctrl"><span id="prevBtn">上一首</span><span id="modeBtn">列表循环</span><span id="nextBtn">下一首</span></div>
+<select id="mfList"></select>
 </div>
-
-<footer>
-    &copy; 2026 个人介绍 · 使用此模板可自由修改
-</footer>
-
+<div class="container">
+<section class="hero-big">
+<div class="avatar-wrap"><div class="avatar-ring"></div><div class="hero-avatar"><img src="my_photo.jpg" alt="个人照片"></div></div>
+<h1>你好，我是狼王小狼</h1>
+<p class="sub" id="typingText"></p>
+<div><a href="#contact" class="btn">联系我</a><a href="#skills" class="btn outline">看看我的技能</a></div>
+</section>
+<h2 class="section-title">关于我</h2>
+<section id="about" class="glass card"><p>我是狼王小狼，一个热爱折腾的普通人。平时喜欢捣鼓电脑、搞点小创作，偶尔在网上发疯，线下比较安静。喜欢简单又有意思的东西，相信技术也可以很好玩。</p></section>
+<h2 class="section-title">我的技能</h2>
+<section id="skills" class="glass card"><div class="skills-grid">
+<div class="skill-item"><div class="skill-icon">💻</div><div class="skill-name">电脑折腾</div></div>
+<div class="skill-item"><div class="skill-icon">🎨</div><div class="skill-name">设计审美</div></div>
+<div class="skill-item"><div class="skill-icon">🎮</div><div class="skill-name">打游戏</div></div>
+<div class="skill-item"><div class="skill-icon">🎬</div><div class="skill-name">看电影</div></div>
+<div class="skill-item"><div class="skill-icon">🌐</div><div class="skill-name">网页小制作</div></div>
+<div class="skill-item"><div class="skill-icon">🛠️</div><div class="skill-name">解决问题</div></div>
+</div></section>
+<h2 class="section-title">兴趣爱好</h2>
+<section id="hobbies" class="glass card"><div class="hobby-tags">
+<span class="hobby-tag">打工狼</span><span class="hobby-tag">i人</span><span class="hobby-tag">休息</span><span class="hobby-tag">电影</span><span class="hobby-tag">游戏</span><span class="hobby-tag">折腾电脑</span><span class="hobby-tag">听歌</span><span class="hobby-tag">追剧</span>
+</div></section>
+<h2 class="section-title">联系我</h2>
+<section id="contact" class="glass card"><div class="contact-list">
+<div class="contact-item" data-preview="qq"><span class="label">QQ</span><span class="value">3060341283 <a href="https://qm.qq.com/q/HFfeTiJHOu" target="_blank">野狼</a></span></div>
+<div class="contact-item" data-preview="bilibili"><span class="label">B站</span><span class="value"><a href="https://space.bilibili.com/1875595273" target="_blank">狼王</a></span></div>
+<div class="contact-item" data-preview="douyin"><span class="label">抖音</span><span class="value"><a href="https://v.douyin.com/0P12xSX624Y/" target="_blank">狼王小wolf</a></span></div>
+<div class="contact-item" data-preview="qqgroup"><span class="label">QQ群</span><span class="value"><a href="https://qun.qq.com/universal-share/share?ac=1&authKey=aZ%2BaD51BgG%2BgAfxgBAVyhjk8zYK%2Fl5mNWJXnUnkLlwgGq6eGkKqWUMB6MaqDzZ3e&busi_data=eyJncm91cENvZGUiOiIxNDQzOTkxNzciLCJ0b2tlbiI6IlFaK0kyWGtuSk1DcG9nWkVFR3kwMmFkSTV1MDhlc2s2Vk1IdlJrbkxNend1TGlMZ3Z4Zko2S0VlUERKMHNUTzIiLCJ1aW4iOiIzMDYwMzQxMjgzIn0%3D&data=AXp7mHgsoDmEM_gMxxdzqHK2otQ6M9ZuSkhqNxwuw_YMelXX3QO31mvstbwNQtgX-VTWhSlB0sqPxtdOQaXWUg&svctype=4&tempid=h5_group_info" target="_blank">小狼的QQ群</a></span></div>
+<div class="contact-item" data-preview="x"><span class="label">X</span><span class="value"><a href="https://x.com/xiaowolflike" target="_blank">小狼</a></span></div>
+<div class="contact-item" data-preview="email"><span class="label">邮箱</span><span class="value">furryeva@126.com</span></div>
+<div class="contact-item" data-preview="sms"><span class="label">短信</span><span class="value">19200833032</span></div>
+</div></section>
+</div>
+<footer>&copy; 2026 狼王小狼 · 个人主页</footer>
+<div class="preview-card" id="previewCard"><div class="pv-icon" id="pvIcon"></div><div class="pv-title" id="pvTitle"></div><div class="pv-desc" id="pvDesc"></div><div class="pv-badge" id="pvBadge"></div></div>
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.onload=function(){window.scrollTo(0,0)};
+const songs=[
+{file:"music/Gareth.T,揽佬SKAI ISYOURGOD - 跟悲伤结了帐.mp3",name:"跟悲伤结了帐",artist:"Gareth.T、揽佬SKAI"},
+{file:"music/Graham - Save Me.mp3",name:"Save Me",artist:"Graham"},
+{file:"music/陈慧琳 - 快乐情人.mp3",name:"快乐情人",artist:"陈慧琳"},
+{file:"music/励阳,徐君 - 我知道你.mp3",name:"我知道你",artist:"励阳、徐君"},
+{file:"music/薛之谦 - 暧昧.mp3",name:"暧昧",artist:"薛之谦"},
+{file:"music/薛之谦 - 背过手.mp3",name:"背过手",artist:"薛之谦"},
+{file:"music/薛之谦 - 被人.mp3",name:"被人",artist:"薛之谦"},
+{file:"music/薛之谦 - 变废为宝.mp3",name:"变废为宝",artist:"薛之谦"},
+{file:"music/薛之谦 - 迟迟.mp3",name:"迟迟",artist:"薛之谦"},
+{file:"music/薛之谦 - 崇拜.mp3",name:"崇拜",artist:"薛之谦"},
+{file:"music/薛之谦 - 丑八怪.mp3",name:"丑八怪",artist:"薛之谦"},
+{file:"music/薛之谦 - 等我回家.mp3",name:"等我回家",artist:"薛之谦"},
+{file:"music/薛之谦 - 动物世界.mp3",name:"动物世界",artist:"薛之谦"},
+{file:"music/薛之谦 - 方圆几里.mp3",name:"方圆几里",artist:"薛之谦"},
+{file:"music/薛之谦 - 刚刚好.mp3",name:"刚刚好",artist:"薛之谦"},
+{file:"music/薛之谦 - 怪咖.mp3",name:"怪咖",artist:"薛之谦"},
+{file:"music/薛之谦 - 狐狸.mp3",name:"狐狸",artist:"薛之谦"},
+{file:"music/薛之谦 - 媚人.mp3",name:"媚人",artist:"薛之谦"},
+{file:"music/薛之谦 - 木偶人.mp3",name:"木偶人",artist:"薛之谦"},
+{file:"music/薛之谦 - 那是你离开了北京的生活.mp3",name:"那是你离开了北京的生活",artist:"薛之谦"},
+{file:"music/薛之谦 - 你还要我怎样.mp3",name:"你还要我怎样",artist:"薛之谦"},
+{file:"music/薛之谦 - 念.mp3",name:"念",artist:"薛之谦"},
+{file:"music/薛之谦 - 陪你去流浪.mp3",name:"陪你去流浪",artist:"薛之谦"},
+{file:"music/薛之谦 - 平庸 (Live).mp3",name:"平庸 (Live)",artist:"薛之谦"},
+{file:"music/薛之谦 - 其实.mp3",name:"其实",artist:"薛之谦"},
+{file:"music/薛之谦 - 认真的雪.mp3",name:"认真的雪",artist:"薛之谦"},
+{file:"music/薛之谦 - 绅士.mp3",name:"绅士",artist:"薛之谦"},
+{file:"music/薛之谦 - 深深爱过你(前世).mp3",name:"深深爱过你(前世)",artist:"薛之谦"},
+{file:"music/薛之谦 - 天外来物.mp3",name:"天外来物",artist:"薛之谦"},
+{file:"music/薛之谦 - 顽疾.mp3",name:"顽疾",artist:"薛之谦"},
+{file:"music/薛之谦 - 违背的青春.mp3",name:"违背的青春",artist:"薛之谦"},
+{file:"music/薛之谦 - 我好像在哪见过你.mp3",name:"我好像在哪见过你",artist:"薛之谦"},
+{file:"music/薛之谦 - 无数.mp3",name:"无数",artist:"薛之谦"},
+{file:"music/薛之谦 - 下雨了.mp3",name:"下雨了",artist:"薛之谦"},
+{file:"music/薛之谦 - 像风一样.mp3",name:"像风一样",artist:"薛之谦"},
+{file:"music/薛之谦 - 笑场.mp3",name:"笑场",artist:"薛之谦"},
+{file:"music/薛之谦 - 哑巴.mp3",name:"哑巴",artist:"薛之谦"},
+{file:"music/薛之谦 - 演员.mp3",name:"演员",artist:"薛之谦"},
+{file:"music/薛之谦 - 野心.mp3",name:"野心",artist:"薛之谦"},
+{file:"music/薛之谦 - 一半.mp3",name:"一半",artist:"薛之谦"},
+{file:"music/薛之谦 - 意外.mp3",name:"意外",artist:"薛之谦"},
+{file:"music/薛之谦 - 跃.mp3",name:"跃",artist:"薛之谦"},
+{file:"music/薛之谦 - 在那天回不去的路上.mp3",name:"在那天回不去的路上",artist:"薛之谦"},
+{file:"music/薛之谦 - 这么久没见.mp3",name:"这么久没见",artist:"薛之谦"},
+{file:"music/薛之谦 - 租购.mp3",name:"租购",artist:"薛之谦"},
+{file:"music/郁可唯 - 茶汤.mp3",name:"茶汤",artist:"郁可唯"},
+{file:"music/郑浩Z-Hao,冰洁 - 琵琶曲.mp3",name:"琵琶曲",artist:"郑浩Z-Hao、冰洁"}
+];
+let currentSong=0,audio=new Audio(),isPlaying=false;
+const playBtn=document.getElementById('playBtn'),songTitle=document.getElementById('mfTitle'),songArtist=document.getElementById('mfArtist'),barFill=document.getElementById('mfBarFill'),listEl=document.getElementById('mfList'),coverEl=document.getElementById('mfCover');
+songs.forEach((s,i)=>{const opt=document.createElement('option');opt.value=i;opt.textContent=s.name;listEl.appendChild(opt)});
+listEl.onchange=function(){const wasPlaying=!audio.paused;loadSong(parseInt(this.value));if(wasPlaying)audio.play()};
+function loadSong(idx){
+currentSong=(idx+songs.length)%songs.length;
+const s=songs[currentSong];
+audio.src=encodeURI(s.file);
+songTitle.textContent=s.name;
+songArtist.textContent=s.artist;
+listEl.value=currentSong;
+}
+loadSong(0);
+document.getElementById('prevBtn').onclick=function(){const wasPlaying=!audio.paused;loadSong(currentSong-1);if(wasPlaying)audio.play()};
+document.getElementById('nextBtn').onclick=function(){const wasPlaying=!audio.paused;loadSong(currentSong+1);if(wasPlaying)audio.play()};
+playBtn.onclick=function(){if(isPlaying){audio.pause();this.textContent='▶';isPlaying=false}else{audio.play();this.textContent='⏸';isPlaying=true}};
+let playMode="list";
+document.getElementById("modeBtn").onclick=function(){if(playMode==="list"){playMode="single";this.textContent="单曲循环"}else{playMode="list";this.textContent="列表循环"}};
+audio.onended=function(){if(playMode==="single"){audio.currentTime=0;audio.play()}else{loadSong(currentSong+1);audio.play()}};
+audio.ontimeupdate=function(){if(audio.duration){barFill.style.width=(audio.currentTime/audio.duration*100)+'%';const cur=document.getElementById('curTime');if(cur){const m=Math.floor(audio.currentTime/60);const s=Math.floor(audio.currentTime%60);cur.textContent=m+':'+(s<10?'0':'')+s;}}};
+document.getElementById('progressBar').onclick=function(e){const rect=this.getBoundingClientRect();const pct=(e.clientX-rect.left)/rect.width;audio.currentTime=pct*audio.duration};
+const phrases=["娱乐爱好者","设计爱好者","打工狼","喜欢听歌打游戏"];
+let pIdx=0,cIdx=0,deleting=false;
+function typeLoop(){const el=document.getElementById('typingText');const cur=phrases[pIdx];if(!deleting){el.textContent=cur.substring(0,cIdx+1);cIdx++;if(cIdx===cur.length){deleting=true;setTimeout(typeLoop,2000);return}setTimeout(typeLoop,120)}else{el.textContent=cur.substring(0,cIdx-1);cIdx--;if(cIdx===0){deleting=false;pIdx=(pIdx+1)%phrases.length;setTimeout(typeLoop,300);return}setTimeout(typeLoop,40)}}
+typeLoop();
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}})},{threshold:.1});
+document.querySelectorAll('.card').forEach(c=>observer.observe(c));
+window.addEventListener('scroll',()=>{document.getElementById('backTop').classList.toggle('show',window.scrollY>300)});
+const previewData={qq:{icon:'💬',title:'QQ私聊',desc:'加我QQ，随时聊天摸鱼~',badge:'点击跳转添加好友',color:'#12b7f5'},bilibili:{icon:'📺',title:'B站 · 狼王',desc:'看视频、追番、整活都在这',badge:'点击访问我的空间',color:'#fb7299'},douyin:{icon:'🎵',title:'抖音 · 狼王小wolf',desc:'短视频、日常、搞笑内容',badge:'点击打开抖音主页',color:'#fe2c55'},qqgroup:{icon:'👥',title:'小狼的QQ群',desc:'一起来聊天摸鱼交朋友',badge:'点击加入QQ群',color:'#12b7f5'},x:{icon:'🐦',title:'X (Twitter) · 小狼',desc:'国际动态、碎碎念',badge:'点击访问我的主页',color:'#fff'},email:{icon:'📧',title:'邮箱联系',desc:'furryeva@126.com',badge:'工作合作可发邮件',color:'#f472b6'},sms:{icon:'📱',title:'手机短信',desc:'直接发短信找我',badge:'仅紧急事项联系',color:'#22c55e'}};
+const card=document.getElementById('previewCard');
+document.querySelectorAll('[data-preview]').forEach(item=>{item.addEventListener('mouseenter',()=>{const d=previewData[item.dataset.preview];if(!d)return;document.getElementById('pvIcon').textContent=d.icon;document.getElementById('pvTitle').textContent=d.title;document.getElementById('pvDesc').textContent=d.desc;const badge=document.getElementById('pvBadge');badge.textContent=d.badge;badge.style.background=d.color+'33';badge.style.color=d.color;card.classList.add('show')});item.addEventListener('mousemove',(e)=>{let x=e.clientX+15,y=e.clientY+15;if(x+240>window.innerWidth)x=e.clientX-240;card.style.left=x+'px';card.style.top=y+'px'});item.addEventListener('mouseleave',()=>card.classList.remove('show'))});
+</script>
 </body>
 </html>
